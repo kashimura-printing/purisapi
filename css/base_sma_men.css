@@ -1,0 +1,90 @@
+@charset "utf-8";
+.sma-men-nav{
+	display:none;
+}
+html {
+	font-size: 100%;
+} /* font-size　16px*62.5%＝10px */
+body {
+	font-size: 1.0rem;
+} /* 16px　100％ 同*/
+ul, ol, li, dl, dt, dd {
+	list-style-type: none;
+	list-style-position: outside;
+	margin: 0px;
+	padding: 0px;
+	font-weight:500;
+}
+a:link, a:visited {
+	color:#212121;
+	text-decoration:none;
+}
+a:hover, a:active {
+	text-decoration:underline;
+}
+/*-------------------------------------------------
+2021　CSS　by WebCreatorCloudProject TRIBECA
+------------------------------------------------*/
+@media screen and (max-width:1080px) {
+#wra {
+
+}	
+.mai-vis-sli-wra ,#mai-con-wra,footer{
+	display:none;
+}
+/*スマートフォンＵＩメニュー*/
+.sma-men-nav{
+	display:block;
+	height:auto;
+	height:calc(100vh - 70px - 0px);
+}
+.sma-men-wra{
+}
+.sma-men{
+	max-width:680px;
+	width:96%;
+	height:auto;
+	margin:10px auto 0;
+	display:flex;
+	flex-wrap:wrap;
+justify-content: space-around;
+	align-items:stretch;
+}
+.sma-men > .men-lis{
+	max-width:30%;
+	width:28%;
+	height:auto;
+}
+.sma-men > .men-lis > a{
+	width:100%;
+	height:auto;
+	display:inline-block;
+	text-align:center;
+	margin-bottom:10px;
+	font-size:3.0vw;
+	font-weight:700;
+}
+ .sma-men-ico{
+	width:100%;
+	height:auto;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+	align-items:center;
+	margin-bottom:10px;
+}
+ .sma-men-ico > img{
+	width:100%;
+	height:auto;
+	border-radius:16px;
+
+}
+}
+/*-------------------------------------------------
+2021　END CSS　by WebCreatorCloudProject TRIBECA
+------------------------------------------------*/
+
+@media screen and (max-width: 380px) {
+
+
+}
