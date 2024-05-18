@@ -516,3 +516,82 @@ add_action( 'wp_enqueue_scripts', 'remove_block_library_style' );
 function remove_block_library_style() {
   wp_dequeue_style( 'wp-block-library' );
 }
+
+//++++++++++++++++++++++++++++++++++++++++++++++
+// 以下追加記述
+
+// カスタム投稿タイプの追加
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+    register_post_type( 'q_and_a', [ // 投稿タイプ名の定義
+        'labels' => [
+            'name'          => 'Q&A', // 管理画面上で表示する投稿タイプ名
+            'singular_name' => 'q_and_a', // カスタム投稿の識別名
+        ],
+        'public'        => true,  // 投稿タイプをpublicにするか
+        'has_archive'   => true, // アーカイブ機能ON/OFF
+        'menu_position' => 5,     // 管理画面上での配置場所
+        'show_in_rest'  => true,  // 5系から出てきた新エディタ「Gutenberg」を有効にする
+        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields' ,'comments' ),
+    ]);
+}
+
+// カスタムカテゴリーの追加
+register_taxonomy('q_and_a_category', array('q_and_a'), array(
+    'labels' => array(
+        'name' => 'Q&Aカテゴリー'
+    ),
+    'hierarchical' => true,
+    'rewrite' => array('slug' => 'qa_cat') 
+));
+?>
+<?php
+// コールバック関数を使ってコメント表示部分をカスタマイズする
+function custom_comments( $comment, $args, $depth ) {
+    $GLOBALS['comment'] = $comment;
+    switch( $comment->comment_type ) :
+        case 'pingback' :
+        case 'trackback' : ?>
+            <li <?php comment_class(); ?> id="comment<?php comment_ID(); ?>">
+            <div class="back-link"><?php comment_author_link(); ?></div>
+        <?php break;
+        default : ?>
+            <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+                <article <?php comment_class(); ?> class="comment">
+                    <div class="comment-body">
+                        <div class="author vcard">
+                            <?php echo get_avatar( $comment, 100 ); ?>
+                            <span class="author-name"><?php comment_author(); ?></span>
+                            <?php comment_text(); ?>
+                            <?php
+                            if( get_field('comment_put_img', $comment) ): 
+                            ?>
+                                <img src="<?php the_field('comment_put_img', $comment); ?>">
+                            <?php endif; ?>
+                        </div><!-- .vcard -->
+                    </div><!-- comment-body -->
+ 
+                    <footer class="comment-footer">
+                        <time <?php comment_time( 'c' ); ?> class="comment-time">
+                            <span class="date">
+                                <?php comment_date(); ?>
+                            </span>
+                            <span class="time">
+                                <?php comment_time(); ?>
+                            </span>
+                        </time>
+                        <div class="reply"><?php 
+                            comment_reply_link( array_merge( $args, array( 
+                                'reply_text' => '返信',
+                                // 'after' => ' <span>&amp;amp;darr;</span>', 
+                                'depth' => $depth,
+                                'max_depth' => $args['max_depth'] 
+                            ) ) ); ?>
+                        </div><!-- .reply -->
+                    </footer><!-- .comment-footer -->
+ 
+                </article><!-- #comment-<?php comment_ID(); ?> -->
+        <?php // End the default styling of comment
+        break;
+    endswitch;
+}

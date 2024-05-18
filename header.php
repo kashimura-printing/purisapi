@@ -64,6 +64,7 @@ https://wiing-wsc.com/staffs/
     <link href="<?php echo get_template_directory_uri(); ?>/css/reset.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/base.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/base_res.css">
+    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" />
     <?php /* ページパフォーマンス低下時のみ該当イメージをプリロードする
 <link rel="preload" href="<?php echo esc_url( home_url('/') ); ?>wp-content/uploads/2024/03/ico_sma_men2.png" as="image">
 */ ?>
@@ -94,9 +95,7 @@ https://wiing-wsc.com/staffs/
 </head>
 
 <body>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-3.6.0.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/tel.js" defer></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/utility.js" defer></script>
+
     <?php /* 解析タグを使用する場合は下記コメントの有効化
 <script src="<?php echo get_template_directory_uri(); ?>/js/analytics.js" async></script>
 */ ?>

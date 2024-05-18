@@ -1,0 +1,39 @@
+/*
+Theme Name: WIING STAFF'S ver5
+Theme URI: https://wiing-wsc.com/
+Author: WIING WebServiceCloud LLC.
+Author URI: https://wiing-wsc.com/
+Description: WIING WebServiceCloud original theme is WordPress theme suitable for owned STAFF'S or blog site.
+The feature is easy to understand, easy to customize and simple.In particular, with our own css single selector markup, there is nothing to worry about css property settings.
+Requires at least: WordPress 6.4.3
+Version: WIING STAFF'S 5.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: 社内ポータルサイト,オウンドメディア, ブログ,キュレーションサイト
+Text Domain: wiing-lang
+Hava a nice day!
+*/
+/* 以下CSSセレクタ追記述可能 */
+/* コメント欄 */
+.commets-list {
+    margin-bottom: 50px;
+}
+.comment-body {
+    margin-bottom: 30px;
+}
+.comment-author img {
+    border-radius: 90px;
+}
+/* .commets-list ul.children {
+    padding-left: 2rem;
+} */
+.comment-form-comment label {
+    display: block;
+}
+.comment-form-comment textarea {
+    padding: calc(.667em + 2px);
+    border-radius: .33rem
+}
+.comment-respond {
+    margin-bottom: 20px;
+}

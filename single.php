@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <div id="con">
+    <?php comments_template(); ?>
     <!--投稿記事-->
     <?php
     // ACFで保存されたチェックボックスフィールドの値を取得
